@@ -1,21 +1,20 @@
 GameStates = { pause='pause', running='running', game_over='game over' }
 State = GameStates.running
+Tail_length = 0
+Up = false
+Down = false
+Left = false
+Right = false
 
 local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
 
 local SIZE = 30
 local apple = { x = 0, y = 0 }
-local tail_length = 0
 local tail = {}
 
-Up = false
-Down = false
-Left = false
-Right = false
-
 local function tail_increment()
-  tail_length = tail_length + 1
+  Tail_length = Tail_length + 1
 end
 
 local function new_apple_and_trail_incement()
@@ -48,7 +47,7 @@ function Game_draw()
 
   -- text
   love.graphics.setColor(1, 1, 1, 1)
-  love.graphics.print('collected apples: ' .. tail_length, 10, 10, 0, 1.5, 1.5, 0, 0, 0, 0)
+  love.graphics.print('collected apples: ' .. Tail_length, 10, 10, 0, 1.5, 1.5, 0, 0, 0, 0)
 end
 
 function Game_update()
@@ -83,7 +82,7 @@ function Game_update()
     snake.y = 0
   end
 
-  if tail_length > 0 then
+  if Tail_length > 0 then
     for _, value in ipairs(tail) do
       local x, y = value[1], value[2]
       value[1], value[2] = old.x, old.y
@@ -115,7 +114,7 @@ function Game_restart()
   direction.x, direction.y = 0, 0
   tail = {}
   Up, Down, Left, Right = false, false, false, false
-  tail_length = 0
+  Tail_length = 0
   State = GameStates.running
   Add_apple()
 end
