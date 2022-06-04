@@ -105,5 +105,17 @@ function Game_over_message()
   love.graphics.print("Press Space to restart", 270, 450, 0, 3, 3, 0, 0 , 0, 0)
 end
 
+function Game_pause_mesage()
+  love.graphics.print("Pause", 300, 350, 0, 4, 4, 0, 0, 0, 0)
+  love.graphics.print("Press p to return the game", 270, 450, 0, 3, 3, 0, 0 , 0, 0)
+end
+
 function Game_restart()
+  snake.x, snake.y = 15, 15
+  direction.x, direction.y = 0, 0
+  tail = {}
+  Up, Down, Left, Right = false, false, false, false
+  tail_length = 0
+  State = GameStates.running
+  Add_apple()
 end
