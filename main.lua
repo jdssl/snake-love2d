@@ -8,14 +8,20 @@ end
 
 function love.draw()
   Game_draw()
+
+  if State == GameStates.game_over then
+    Game_over_message()
+  end
 end
 
 function love.update()
-  Interval = Interval - 1
+  if State == GameStates.running then
+    Interval = Interval - 1
 
-  if Interval < 0 then
-    Game_update()
-    Interval = 20
+    if Interval < 0 then
+      Game_update()
+      Interval = 20
+    end
   end
 end
 
@@ -30,5 +36,7 @@ function love.keypressed(key)
     Left, Right, Up, Down = false, false, true, false
   elseif key == 'down' then
     Left, Right, Up, Down = false, false, false, true
+  elseif key == 'space' and State == GameStates.game_over then
+    Game_restart()
   end
 end

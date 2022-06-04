@@ -1,3 +1,6 @@
+GameStates = { pause='pause', running='running', game_over='game over' }
+State = GameStates.running
+
 local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
 
@@ -20,6 +23,7 @@ local function new_apple_and_trail_incement()
   tail_increment()
   table.insert(tail, {0, 0})
 end
+
 function Add_apple()
   math.randomseed(os.time())
 
@@ -87,6 +91,18 @@ function Game_update()
     end
   end
 
+  for _, value in ipairs(tail) do
+    local snake_killed_itself = snake.x == value[1] and snake.y == value[2]
+
+    if snake_killed_itself then
+      State = GameStates.game_over
+    end
+  end
+end
+
+function Game_over_message()
+  love.graphics.print("Game Over!", 300, 350, 0, 4, 4, 0, 0, 0, 0)
+  love.graphics.print("Press Space to restart", 270, 450, 0, 3, 3, 0, 0 , 0, 0)
 end
 
 function Game_restart()
