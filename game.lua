@@ -1,7 +1,5 @@
-local snakeX = 15
-local snakeY = 15
-local directionX = 0
-local directionY = 0
+local snake = { x = 15, y = 15 }
+local direction = { x = 0, y = 0 }
 
 up = false
 down = false
@@ -13,22 +11,23 @@ end
 
 function game_draw()
   love.graphics.setColor(1.0, 0.35, 0.4, 1.0)
-  love.graphics.rectangle('fill', snakeX*30, snakeY*30, 30, 30, 10, 10)
+  love.graphics.rectangle('fill', snake.x*30, snake.y*30, 30, 30, 10, 10)
 end
 
 function game_update()
   if up then
-    directionX, directionY = 0, -1
+    -- directionX, directionY = 0, -1
+    direction.x, direction.y = 0, -1
   elseif down then
-    directionX, directionY = 0, 1
+    direction.x, direction.y = 0, 1
   elseif left then
-    directionX, directionY = -1, 0
+    direction.x, direction.y = -1, 0
   elseif right then
-    directionX, directionY = 1, 0
+    direction.x, direction.y = 1, 0
   end
 
-  snakeX = snakeX + directionX
-  snakeY = snakeY + directionY
+  snake.x = snake.x + direction.x
+  snake.y = snake.y + direction.y
 end
 
 function game_restart()
