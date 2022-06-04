@@ -1,5 +1,12 @@
 local snakeX = 15
 local snakeY = 15
+local directionX = 0
+local directionY = 0
+
+up = false
+down = false
+left = false
+right = false
 
 function add_apple()
 end
@@ -10,6 +17,18 @@ function game_draw()
 end
 
 function game_update()
+  if up then
+    directionX, directionY = 0, -1
+  elseif down then
+    directionX, directionY = 0, 1
+  elseif left then
+    directionX, directionY = -1, 0
+  elseif right then
+    directionX, directionY = 1, 0
+  end
+
+  snakeX = snakeX + directionX
+  snakeY = snakeY + directionY
 end
 
 function game_restart()
