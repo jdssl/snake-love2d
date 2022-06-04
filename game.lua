@@ -9,7 +9,7 @@ Right = false
 local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
 
-local SIZE = 30
+local SIZE = 20
 local apple = { x = 0, y = 0 }
 local tail = {}
 
@@ -33,12 +33,12 @@ end
 function Game_draw()
   -- snake's head
   love.graphics.setColor(0.8, 0.9, 0.0, 1.0)
-  love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, SIZE, SIZE, 10, 10)
+  love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, SIZE, SIZE)
 
   -- snake's tail
   love.graphics.setColor(0.6, 0.9, 0.0, 1.0)
   for _, value in ipairs(tail) do
-    love.graphics.rectangle('fill', value[1]*SIZE, value[2]*SIZE, SIZE, SIZE, 15, 15)
+    love.graphics.rectangle('fill', value[1]*SIZE, value[2]*SIZE, SIZE, SIZE)
   end
 
   -- apple
@@ -100,13 +100,13 @@ function Game_update()
 end
 
 function Game_over_message()
-  love.graphics.print("Game Over!", 300, 350, 0, 4, 4, 0, 0, 0, 0)
-  love.graphics.print("Press Space to restart", 270, 450, 0, 3, 3, 0, 0 , 0, 0)
+  love.graphics.print("Game Over!", 100, 150, 0, 3, 3, 0, 0, 0, 0)
+  love.graphics.print("Press Space to restart", 80, 250, 0, 2, 2, 0, 0 , 0, 0)
 end
 
 function Game_pause_mesage()
-  love.graphics.print("Pause", 300, 350, 0, 4, 4, 0, 0, 0, 0)
-  love.graphics.print("Press p to return the game", 270, 450, 0, 3, 3, 0, 0 , 0, 0)
+  love.graphics.print("Pause", 150, 150, 0, 3, 3, 0, 0, 0, 0)
+  love.graphics.print("Press p to return the game", 40, 250, 0, 2, 2, 0, 0 , 0, 0)
 end
 
 function Game_restart()
