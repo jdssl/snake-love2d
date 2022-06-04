@@ -1,28 +1,39 @@
 local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
 
-up = false
-down = false
-left = false
-right = false
+local SIZE = 30
+local apple = { x = 0, y = 0 }
 
-function add_apple()
+Up = false
+Down = false
+Left = false
+Right = false
+
+function Add_apple()
+  math.randomseed(os.time())
+
+  apple.x = math.random(SIZE-1)
+  apple.y = math.random(SIZE-1)
 end
 
-function game_draw()
+function Game_draw()
+  -- snake
+  love.graphics.setColor(0.8, 0.9, 0.0, 1.0)
+  love.graphics.rectangle('fill', snake.x*SIZE, snake.y*SIZE, 30, 30, 10, 10)
+
+  -- apple
   love.graphics.setColor(1.0, 0.35, 0.4, 1.0)
-  love.graphics.rectangle('fill', snake.x*30, snake.y*30, 30, 30, 10, 10)
+  love.graphics.rectangle('fill', apple.x*SIZE, apple.y*SIZE, 30, 30, 10, 10)
 end
 
-function game_update()
-  if up then
-    -- directionX, directionY = 0, -1
+function Game_update()
+  if Up then
     direction.x, direction.y = 0, -1
-  elseif down then
+  elseif Down then
     direction.x, direction.y = 0, 1
-  elseif left then
+  elseif Left then
     direction.x, direction.y = -1, 0
-  elseif right then
+  elseif Right then
     direction.x, direction.y = 1, 0
   end
 
@@ -30,5 +41,5 @@ function game_update()
   snake.y = snake.y + direction.y
 end
 
-function game_restart()
+function Game_restart()
 end

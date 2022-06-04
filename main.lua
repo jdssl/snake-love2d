@@ -2,19 +2,20 @@ require('game')
 
 function love.load()
   love.window.setPosition(500, 50, 1)
-  interval = 20
+  Interval = 20
+  Add_apple()
 end
 
 function love.draw()
-  game_draw()
+  Game_draw()
 end
 
 function love.update()
-  interval = interval - 1
+  Interval = Interval - 1
 
-  if interval < 0 then
-    game_update()
-    interval = 20
+  if Interval < 0 then
+    Game_update()
+    Interval = 20
   end
 end
 
@@ -22,12 +23,12 @@ function love.keypressed(key)
   if key == 'escape' then
     love.event.quit()
   elseif key == 'left' then
-    left, right, up, down = true, false, false, false
+    Left, Right, Up, Down = true, false, false, false
   elseif key == 'right' then
-    left, right, up, down = false, true, false, false
+    Left, Right, Up, Down = false, true, false, false
   elseif key == 'up' then
-    left, right, up, down = false, false, true, false
+    Left, Right, Up, Down = false, false, true, false
   elseif key == 'down' then
-    left, right, up, down = false, false, false, true
+    Left, Right, Up, Down = false, false, false, true
   end
 end
