@@ -52,13 +52,13 @@ function Game_draw()
 end
 
 function Game_update()
-  if Up then
+  if Up and direction.y == 0 then
     direction.x, direction.y = 0, -1
-  elseif Down then
+  elseif Down and direction.y == 0 then
     direction.x, direction.y = 0, 1
-  elseif Left then
+  elseif Left and direction.x == 0 then
     direction.x, direction.y = -1, 0
-  elseif Right then
+  elseif Right and direction.x == 0 then
     direction.x, direction.y = 1, 0
   end
 
