@@ -2,6 +2,7 @@ require('game')
 
 function love.load()
   love.window.setPosition(500, 50, 1)
+  interval = 20
 end
 
 function love.draw()
@@ -9,7 +10,12 @@ function love.draw()
 end
 
 function love.update()
-  game_update()
+  interval = interval - 1
+
+  if interval < 0 then
+    game_update()
+    interval = 20
+  end
 end
 
 function love.keypressed(key)
