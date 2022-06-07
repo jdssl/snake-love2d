@@ -10,6 +10,7 @@ local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
 
 local SIZE = 20
+local SIZE_APPLE = 15
 local apple = { x = 0, y = 0 }
 local tail = {}
 
@@ -26,8 +27,8 @@ end
 function Add_apple()
   math.randomseed(os.time())
 
-  apple.x = math.random(SIZE-1)
-  apple.y = math.random(SIZE-1)
+  apple.x = math.random(SIZE_APPLE-1)
+  apple.y = math.random(SIZE_APPLE-1)
 end
 
 function Game_draw()
