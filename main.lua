@@ -53,9 +53,7 @@ function love.keypressed(key)
   elseif key == 'p' then
     if State == GameStates.running then
       State = GameStates.pause
-    elseif State == GameStates.game_over then
-      Game_restart()
-    else
+    elseif State ~= GameStates.game_over then
       State = GameStates.running
     end
   end
