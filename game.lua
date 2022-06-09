@@ -5,6 +5,7 @@ Up = false
 Down = false
 Left = false
 Right = false
+GameFont = love.graphics.newFont(15)
 
 local snake = { x = 15, y = 15 }
 local direction = { x = 0, y = 0 }
@@ -48,6 +49,7 @@ function Game_draw()
 
   -- text
   love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.setFont(GameFont)
   love.graphics.print('collected apples: ' .. Tail_length, 10, 10, 0, 1.5, 1.5, 0, 0, 0, 0)
 end
 
@@ -101,13 +103,23 @@ function Game_update()
 end
 
 function Game_over_message()
-  love.graphics.print("Game Over!", 100, 150, 0, 3, 3, 0, 0, 0, 0)
-  love.graphics.print("Press Space to restart", 80, 250, 0, 2, 2, 0, 0 , 0, 0)
+  love.graphics.printf(
+    "Game Over - Press space to restart",
+    0,
+    200,
+    love.graphics.getWidth(),
+    "center"
+  )
 end
 
 function Game_pause_mesage()
-  love.graphics.print("Pause", 150, 150, 0, 3, 3, 0, 0, 0, 0)
-  love.graphics.print("Press p to return the game", 40, 250, 0, 2, 2, 0, 0 , 0, 0)
+  love.graphics.printf(
+    "Pause - Press p to return",
+    0,
+    200,
+    love.graphics.getWidth(),
+    "center"
+  )
 end
 
 function Game_restart()
