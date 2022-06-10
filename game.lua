@@ -53,15 +53,19 @@ function Game_draw()
   love.graphics.print('collected apples: ' .. Tail_length, 10, 10, 0, 1.5, 1.5, 0, 0, 0, 0)
 end
 
+local function changeDirection(x, y)
+  direction.x, direction.y = x, y
+end
+
 function Game_update()
   if Up and direction.y == 0 then
-    direction.x, direction.y = 0, -1
+    changeDirection(0, -1)
   elseif Down and direction.y == 0 then
-    direction.x, direction.y = 0, 1
+    changeDirection(0, 1)
   elseif Left and direction.x == 0 then
-    direction.x, direction.y = -1, 0
+    changeDirection(-1, 0)
   elseif Right and direction.x == 0 then
-    direction.x, direction.y = 1, 0
+    changeDirection(1, 0)
   end
 
   local old = { x = snake.x, y = snake.y }
