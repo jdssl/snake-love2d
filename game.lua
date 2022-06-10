@@ -32,6 +32,10 @@ function Add_apple()
   apple.y = math.random(SIZE_APPLE-1)
 end
 
+local function changeDirection(x, y)
+  direction.x, direction.y = x, y
+end
+
 function Game_draw()
   -- snake's head
   love.graphics.setColor(0.8, 0.9, 0.0, 1.0)
@@ -51,10 +55,6 @@ function Game_draw()
   love.graphics.setColor(1, 1, 1, 1)
   love.graphics.setFont(GameFont)
   love.graphics.print('collected apples: ' .. Tail_length, 10, 10, 0, 1.5, 1.5, 0, 0, 0, 0)
-end
-
-local function changeDirection(x, y)
-  direction.x, direction.y = x, y
 end
 
 function Game_update()
@@ -104,26 +104,6 @@ function Game_update()
       State = GameStates.game_over
     end
   end
-end
-
-function Game_over_message()
-  love.graphics.printf(
-    "Game Over - Press space to restart",
-    0,
-    200,
-    love.graphics.getWidth(),
-    "center"
-  )
-end
-
-function Game_pause_mesage()
-  love.graphics.printf(
-    "Pause - Press p to return",
-    0,
-    200,
-    love.graphics.getWidth(),
-    "center"
-  )
 end
 
 function Game_restart()
