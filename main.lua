@@ -1,4 +1,5 @@
 require('game')
+require('messages')
 
 function love.load()
   love.window.setPosition(500, 50, 1)
